@@ -13,7 +13,7 @@ changes...
 
 #1
 class System - new name:
-Learnable
+Systems
 
 *System class can't be with this name to avoid conflict with implemented System class (i.e System.out.print( .. ) )
 
