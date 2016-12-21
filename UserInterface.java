@@ -175,7 +175,7 @@ public static void main(String[] args) {
 		return;
 	}
 
-	public static boolean createAccount(Account account) {
+	public static boolean getAccountInfo(Account account) {
 		boolean flag = false;
 		String name = "";
 		System.out.print("User name: ");
