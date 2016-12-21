@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Systems {
 
-	public static ArrayList<GameDetails> gameDetails = new ArrayList<GameDetails>();
+	private static ArrayList<GameDetails> gameDetails = new ArrayList<GameDetails>();
 	private static User loggedInUser = null;
 
 	public static User getLoggedInUser() {
@@ -12,22 +12,23 @@ public class Systems {
 	public static void setLoggedInUser(User user) {
 		loggedInUser = user;
 	}
-	
+
 	public static void addUser(User user) {
 		UserDB.addNewUser(user);
 	}
-	public static void setLoggedInUser(String nameOrEmail, String password) {
-		if (nameOrEmail.indexOf("@") != -1) {
+
+	public static void setLoggedInUser(String nameOrEmail) {
+		if (nameOrEmail.indexOf("@") == -1) { // this is a user name
 			for (int i = 0; i < UserDB.getListOfUsers().size(); i++) {
 				Account account = UserDB.getListOfUsers().get(i).getAccount();
-				if (account.getUserName().equals(nameOrEmail) && account.getPassword().equals(password)) {
+				if (account.getUserName().equals(nameOrEmail)) {
 					loggedInUser = UserDB.getListOfUsers().get(i);
 				}
 			}
 		} else {
 			for (int i = 0; i < UserDB.getListOfUsers().size(); i++) {
 				Account account = UserDB.getListOfUsers().get(i).getAccount();
-				if (account.getEmail().equals(nameOrEmail) && account.getPassword().equals(password)) {
+				if (account.getEmail().equals(nameOrEmail)) {
 					loggedInUser = UserDB.getListOfUsers().get(i);
 				}
 			}
@@ -77,8 +78,9 @@ public class Systems {
 
 	public static Boolean verifyLogInInfoByUserName(String userName, String password) {
 		for (int i = 0; i < UserDB.getListOfUsers().size(); i++) {
-			if (UserDB.getListOfUsers().get(i).getAccount().getUserName() == userName
-					&& UserDB.getListOfUsers().get(i).getAccount().getPassword() == password)
+			
+			if (UserDB.getListOfUsers().get(i).getAccount().getUserName().equals(userName)
+					&& UserDB.getListOfUsers().get(i).getAccount().getPassword().equals(password))
 				return true;
 		}
 
@@ -87,8 +89,8 @@ public class Systems {
 
 	public static Boolean verifyLogInInfoByEmail(String email, String password) {
 		for (int i = 0; i < UserDB.getListOfUsers().size(); i++) {
-			if (UserDB.getListOfUsers().get(i).getAccount().getEmail() == email
-					&& UserDB.getListOfUsers().get(i).getAccount().getPassword() == password)
+			if (UserDB.getListOfUsers().get(i).getAccount().getEmail().equals(email)
+					&& UserDB.getListOfUsers().get(i).getAccount().getPassword().equals(password))
 				return true;
 		}
 
