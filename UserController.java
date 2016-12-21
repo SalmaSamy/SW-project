@@ -12,7 +12,7 @@ public class UserController {
 	public static boolean createNewUser(int type) { // 1 student 2 teacher
 		
 		Account account = new Account();
-		boolean valid = UserInterface.createAccount(account);
+		boolean valid = UserInterface.getAccountInfo(account);
 		if (!valid)
 			return false;
 
