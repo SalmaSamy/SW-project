@@ -87,7 +87,7 @@ public static void main(String[] args) {
 					System.out.println("Your score = " + Systems.getLoggedInUser().getScore());
 				}
 				if (choice == 3) {
-					Systems.getLoggedInUser().showProfile();
+				System.out.println(Systems.getLoggedInUser().showProfile());
 				}
 				if (choice == 4) {
 					int c = 0;

@@ -50,8 +50,8 @@ public class User {
 		return account;
 	}
 	
-    public void showProfile(){
-     System.out.println(account + " \nScore: "+ score );	
+    public String showProfile(){
+    return(account + " \nScore: "+ score );	
     }
     
 }
