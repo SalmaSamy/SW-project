@@ -132,6 +132,7 @@ public static void main(String[] args) {
 				}
 			}
 		}
+		cin.close();
 	}
 
 	public static void signIn() {
