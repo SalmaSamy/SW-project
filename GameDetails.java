@@ -9,44 +9,19 @@ public class GameDetails {
 	private double rating , sumRating ;
 	private DiffecultyLevel diffecultyLevel;
 	private String name, Resource, Description , type;
-	private int numOfRepots , gameID , numOfRates , numOfQuestions ; 
+	private int numOfRepots  , numOfRates , numOfQuestions ; 
 	private AtomicInteger count = new AtomicInteger(0); 
-	
+	int gameID ;
 	Scanner cin = new Scanner(System.in) ;
 	
 	public GameDetails()
 	{
-		gameID = count.incrementAndGet() ;
+		gameID = GameID.GameID++;
 	}
 	
 	public void reportAGame()
 	{
 		numOfRepots++ ;
-	}
-	public void fillGameDetails()
-	{
-		System.out.print("\nGame Name: ");
-		setName(cin.nextLine());
-		System.out.print("Score: ");
-		setScore(cin.nextDouble()) ;
-		System.out.print("Description: ");
-		setDescription(cin.nextLine());
-		System.out.print("Resources: ");
-		setResource(cin.nextLine());
-		
-		System.out.println("\n1." + Domain.Math + "\n2." + Domain.Science);
-		System.out.println("3." + Domain.Chemistry + "\n4." + Domain.Programming);
-		System.out.print("Choose Domain Number: ");
-		setDomain(cin.nextInt());
-		
-		System.out.println("\n1.MCQ\n2.T/F\nChoose Type: ");
-		if(cin.nextInt() == 1) setType("MCQ");
-		else setType("T/F") ;
-		
-		System.out.print("Number Of Questions: ");
-		setNumOfQuestions(cin.nextInt());
-		
-		gameID = count.incrementAndGet(); 
 	}
 	public void updateRating(double rate) {
 		

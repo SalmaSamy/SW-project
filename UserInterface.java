@@ -72,9 +72,9 @@ public static void main(String[] args) {
 							break;
 						}
 						System.out.println("Game number: ");
-						Game game = GameDB.loadGame(games.get(cin.nextInt() - 1).getGameID());
-						GameController.establishGame(game);
-						double score = game.showResults();
+						Game game = GameDB.loadGame(games.get(cin.nextInt()-1).getGameID());
+						GameInterface.runGame(game);
+						double score = game.getResults();
 						Systems.getLoggedInUser().updateScore(score);
 						
 						System.out.println("press 1 to back");
@@ -125,14 +125,12 @@ public static void main(String[] args) {
 
 				}
 				if (choice == 5) {
-					Game newGame = new Game();
-					newGame.createGame((Teacher)Systems.getLoggedInUser());
+					Game newGame = GameInterface.createGame((Teacher)Systems.getLoggedInUser());
 					GameDB.addGame(newGame);
 					Systems.updateGamesFromDB();
 				}
 			}
 		}
-		cin.close();
 	}
 
 	public static void signIn() {
@@ -176,7 +174,7 @@ public static void main(String[] args) {
 		return;
 	}
 
-		public static boolean getAccountInfo(Account account) {
+	public static boolean createAccount(Account account) {
 		boolean flag = false;
 		String name = "";
 		System.out.print("User name: ");
@@ -208,7 +206,7 @@ public static void main(String[] args) {
 		date = date.substring(date.indexOf("/") + 1);
 		y = Integer.parseInt(date);
 
-		account.setbirthdate(new Date(d, m, y));
+		account.setbirthdate(new Datee(d, m, y));
 
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -220,7 +218,7 @@ public static void main(String[] args) {
 		date = date.substring(date.indexOf("/") + 1);
 		y = Integer.parseInt(date);
 
-		account.setdateOfRegistration(new Date(d, m, y));
+		account.setdateOfRegistration(new Datee(d, m, y));
 
 		return true;
 	}
