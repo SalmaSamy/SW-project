@@ -175,7 +175,7 @@ public static void main(String[] args) {
 		return;
 	}
 
-	public static boolean getAccountInfo(Account account) {
+		public static boolean getAccountInfo(Account account) {
 		boolean flag = false;
 		String name = "";
 		System.out.print("User name: ");
@@ -207,7 +207,7 @@ public static void main(String[] args) {
 		date = date.substring(date.indexOf("/") + 1);
 		y = Integer.parseInt(date);
 
-		account.setbirthdate(new Datee(d, m, y));
+		account.setbirthdate(new Date(d, m, y));
 
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -219,7 +219,7 @@ public static void main(String[] args) {
 		date = date.substring(date.indexOf("/") + 1);
 		y = Integer.parseInt(date);
 
-		account.setdateOfRegistration(new Datee(d, m, y));
+		account.setdateOfRegistration(new Date(d, m, y));
 
 		return true;
 	}
