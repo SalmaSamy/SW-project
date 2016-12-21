@@ -9,42 +9,6 @@ public class Account {
 	private Datee dateOfRegistration;
 	private Gender gender;
 
-	public void editAccount() {
-		int c = 0;
-		Scanner choice = new Scanner(System.in);
-		Scanner newvalue = new Scanner(System.in);
-		while (true) {
-			System.out.println("1 for user name");
-			System.out.println("2 for password");
-			System.out.println("3 for email");
-			System.out.println("4 for finish editing");
-			System.out.println("enter num of your choice");
-			c = choice.nextInt();
-			switch (c) {
-			case 1:
-				System.out.println("enter new user name");
-				userName = newvalue.nextLine();
-				break;
-			case 2:
-				System.out.println("enter new password");
-				password = newvalue.nextLine();
-				break;
-			case 3:
-				System.out.println("enter new email");
-				email = newvalue.nextLine();
-				break;
-			case 4:
-				c = 0;
-				break;
-			
-			default:
-				System.out.println("wrong input");
-			}
-			if (c == 0)
-				break;
-		}
-	}
-
 	@Override
 	public String toString() {
 		return "userName = " + userName +  "\nemail = " + email + "\nbirthdate = "
