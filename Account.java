@@ -36,6 +36,7 @@ public class Account {
 			case 4:
 				c = 0;
 				break;
+			
 			default:
 				System.out.println("wrong input");
 			}
@@ -44,11 +45,10 @@ public class Account {
 		}
 	}
 
+	@Override
 	public String toString() {
-		String acc = "username " + userName + "\n" + "password " + password + "\n" + "email " + email + "\n"
-				+ "birthdate " + birthdate + "\n" + "date of registeration " + dateOfRegistration + "\n" + "gender "
-				+ gender;
-		return acc;
+		return "userName = " + userName +  "\nemail = " + email + "\nbirthdate = "
+				+ birthdate + "\ndateOfRegistration = " + dateOfRegistration + "\ngender = " + gender ;
 	}
 
 	public void setUserName(String name) {
@@ -90,4 +90,6 @@ public class Account {
 	public String getEmail() {
 		return email;
 	}
+  
+	
 }

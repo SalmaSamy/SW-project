@@ -49,4 +49,9 @@ public class User {
 	public Account getAccount() {
 		return account;
 	}
+	
+    public void showProfile(){
+     System.out.println(account + " \nScore: "+ score );	
+    }
+    
 }

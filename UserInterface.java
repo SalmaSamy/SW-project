@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class UserInterface {
 	public static Scanner cin = new Scanner(System.in);
-	public static void main(String[] args) {
+	
+public static void main(String[] args) {
 
 		while (true) {
 			System.out.println("\n\t\tWelcome To Learnable");
@@ -24,11 +25,13 @@ public class UserInterface {
 			while (Systems.getLoggedInUser() != null) {
 				System.out.println("\n\n\n1.Play Game");
 				System.out.println("\n2.Show Score");
+				System.out.println("\n3.Show Profile");
+				System.out.println("\n4.edite Account");
 
-				int lastOption = 3;
+				int lastOption = 5;
 				if (Systems.getLoggedInUser().getType() == 't') {
-					System.out.println("\n3.CreateGame");
-					lastOption = 4;
+					System.out.println("\n5.CreateGame");
+					lastOption = 6;
 				}
 				System.out.println("\n" + lastOption + ".log Out");
 
@@ -84,6 +87,44 @@ public class UserInterface {
 					System.out.println("Your score = " + Systems.getLoggedInUser().getScore());
 				}
 				if (choice == 3) {
+					Systems.getLoggedInUser().showProfile();
+				}
+				if (choice == 4) {
+					int c = 0;
+					while (true) {
+						System.out.println("1 for user name");
+						System.out.println("2 for password");
+						System.out.println("3 for email");
+						System.out.println("4 for finish editing");
+						System.out.println("enter num of your choice");
+						c = cin.nextInt();
+						cin.nextLine();
+						switch (c) {
+						case 1:
+							System.out.println("enter new user name");
+							Systems.getLoggedInUser().getAccount().setUserName(cin.nextLine());
+							break;
+						case 2:
+							System.out.println("enter new password");
+							Systems.getLoggedInUser().getAccount().setPassword(cin.nextLine());
+							break;
+						case 3:
+							System.out.println("enter new email");
+							Systems.getLoggedInUser().getAccount().setEmail(cin.nextLine());
+							break;
+						case 4:
+							c = 0;
+							break;
+						
+						default:
+							System.out.println("wrong input");
+						}
+						if (c == 0)
+							break;
+					}
+
+				}
+				if (choice == 5) {
 					Game newGame = new Game();
 					newGame.createGame((Teacher)Systems.getLoggedInUser());
 					GameDB.addGame(newGame);
@@ -92,7 +133,6 @@ public class UserInterface {
 			}
 		}
 	}
-
 
 	public static void signIn() {
 		boolean flag = false;
@@ -135,7 +175,7 @@ public class UserInterface {
 		return;
 	}
 
-	public static boolean getAccountInfo(Account account) {
+	public static boolean createAccount(Account account) {
 		boolean flag = false;
 		String name = "";
 		System.out.print("User name: ");
